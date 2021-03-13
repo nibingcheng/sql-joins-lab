@@ -58,8 +58,23 @@ The main purpose of our scripts is to query information from both tables:
 
 Write select queries for each of the following:
   1. **Employees working at Macy's**: The full names of employees working at Macy's.
+  select first_name, last_name
+  from jobs
+  inner join employees e ON e.ssn = jobs.ssn
+  where company like 'Mac%';
+
   1. **Companies in Boston**: The companies located in Boston.
+  select company
+  from jobs
+  inner join employees e ON e.ssn = jobs.ssn
+  where city = 'Boston';
+
   1. **Employee with the highest salary**: The full name of the employee with the highest salary.
+  select first_name, last_name
+  from employees e
+  inner join jobs ON e.ssn = jobs.ssn
+  ORDER by salary DESC
+  fetch first 1 row only;
 
 > Note: Those two files can call other files if you'd like.
 
